@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LINK小手机 游玩申请</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "PingFang SC", "Microsoft YaHei", system-ui, -apple-system, sans-serif;
+        }
+
+        :root {
+            --pink-50: #fff5f8;
+            --pink-100: #ffe4f1;
+            --pink-200: #ffc9e3;
+            --pink-300: #ffa5cf;
+            --pink-400: #ff7ab6;
+            --pink-500: #f55a9e;
+            --purple-300: #e0c3fc;
+            --purple-400: #c9a7f0;
+            --text-main: #5a4a55;
+            --text-sub: #8a7584;
+            --text-muted: #b19fae;
+            --white: #ffffff;
+            --shadow: 0 4px 18px rgba(255, 182, 211, 0.35);
+        }
+
+        body {
+            background:
+                radial-gradient(circle at 10% 0%, rgba(255, 182, 220, 0.45), transparent 26%),
+                radial-gradient(circle at 90% 20%, rgba(224, 195, 252, 0.35), transparent 28%),
+                radial-gradient(circle at 50% 100%, rgba(255, 213, 234, 0.5), transparent 30%),
+                linear-gradient(180deg, #ffe9f3 0%, #fdf2fb 45%, #f7e8ff 100%);
+            color: var(--text-main);
+            max-width: 720px;
+            margin: 0 auto;
+            padding: 14px 12px 24px;
+            line-height: 1.55;
+        }
+
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            background-image:
+                linear-gradient(rgba(255, 122, 182, 0.08) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 122, 182, 0.08) 1px, transparent 1px);
+            background-size: 22px 22px;
+            mask-image: radial-gradient(circle at center, rgba(0,0,0,0.35), transparent 72%);
+            -webkit-mask-image: radial-gradient(circle at center, rgba(0,0,0,0.35), transparent 72%);
+            z-index: 0;
+        }
+
+        .wrap {
+            position: relative;
+            z-index: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 22px;
+            font-weight: 800;
+            letter-spacing: 1px;
+            color: #fff;
+            text-shadow:
+                0 0 8px rgba(255, 122, 182, 0.9),
+                0 0 18px rgba(245, 90, 158, 0.6),
+                0 2px 0 #ff7ac1;
+            margin: 6px 0 4px;
+        }
+
+        .title-decoration {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            margin-bottom: 14px;
+            color: #ff7ac1;
+            font-size: 13px;
+        }
+
+        .title-decoration .line {
+            flex: 1;
+            height: 1px;
+            max-width: 80px;
+            background: linear-gradient(90deg, transparent, #ff9bd0, transparent);
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.78);
+            border: 1px solid rgba(255, 186, 218, 0.6);
+            border-radius: 22px;
+            padding: 16px;
+            box-shadow: var(--shadow);
+            backdrop-filter: blur(6px);
+            -webkit-backdrop-filter: blur(6px);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 14px;
+            right: 14px;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.9), transparent);
+        }
+
+        .card h2 {
+            font-size: 16px;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: #d94f8b;
+            font-weight: 700;
+        }
+
+        .card h2::before {
+            content: "";
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: radial-gradient(circle at 30% 30%, #fff, #ff7ac1 60%, #f55a9e);
+            box-shadow: 0 0 10px rgba(255, 122, 182, 0.8);
+        }
+
+        .label-tag {
+            display: inline-block;
+            padding: 3px 10px;
+            border-radius: 999px;
+            font-size: 12px;
+            background: linear-gradient(135deg, #ffd1e8, #e4ccff);
+            color: #a4477c;
+            border: 1px solid rgba(255, 255, 255, 0.9);
+            margin-left: auto;
+        }
+
+        .warn,
+        .info,
+        .danger,
+        .oath-box,
+        .motto-box {
+            border-radius: 18px;
+            padding: 14px;
+            border: 1px solid rgba(255, 255, 255, 0.8);
+            position: relative;
+        }
+
+        .warn {
+            background: linear-gradient(135deg, #fff1f8, #ffe0f2);
+            border-left: 4px solid #ff7ac1;
+        }
+
+        .info {
+            background: linear-gradient(135deg, #f5edff, #e4dcff);
+            border-left: 4px solid #c9a7f0;
+        }
+
+        .danger {
+            background: linear-gradient(135deg, #ffe9f2, #ffd6e7);
+            border-left: 4px solid #f55a9e;
+        }
+
+        .oath-box {
+            background: linear-gradient(135deg, #fdf0fc, #f3e7ff);
+            border-left: 4px solid #d49bff;
+        }
+
+        .motto-box {
+            background: linear-gradient(135deg, #fff7fc, #ffe4f7);
+            border-left: 4px solid #ff9bd0;
+            text-align: center;
+            font-weight: 600;
+            color: #b3457f;
+        }
+
+        .motto-box p {
+            padding: 4px 0;
+            border-bottom: 1px dashed rgba(255, 122, 182, 0.35);
+        }
+
+        .motto-box p:last-child {
+            border-bottom: none;
+        }
+
+        ul {
+            padding-left: 20px;
+            margin: 6px 0;
+        }
+
+        li {
+            padding: 3px 0;
+            color: var(--text-main);
+            font-size: 14px;
+        }
+
+        p {
+            font-size: 14px;
+            color: var(--text-main);
+        }
+
+        .small {
+            font-size: 12px;
+            color: var(--text-sub);
+            margin-top: 6px;
+        }
+        .text-center{
+            text-align:center;
+        }
+        .two-col {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 12px;
+        }
+
+        .two-col .card {
+            padding: 14px;
+        }
+
+        .two-col h2 {
+            font-size: 15px;
+        }
+
+        .two-col li,
+        .two-col p {
+            font-size: 13px;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 18px;
+            font-size: 12px;
+            color: #c779a3;
+            text-shadow: 0 0 8px rgba(255, 255, 255, 0.9);
+        }
+
+        .heart {
+            color: #ff5fa8;
+        }
+        .link-item{
+            margin:10px 0;
+            padding:10px;
+            background:rgba(255,255,255,0.65);
+            border-radius:14px;
+            border:1px solid #ffd2e4;
+        }
+        .link-item-title{
+            font-weight:bold;
+            color:#d94f8b;
+            margin-bottom:6px;
+        }
+        .qq-link{
+            color:#f55a9e;
+            font-weight:bold;
+            text-decoration:none;
+        }
+        .copy-btn{
+            display:inline-block;
+            background:linear-gradient(135deg,#ffd1e8,#e4ccff);
+            color:#a4477c;
+            font-size:12px;
+            padding:4px 10px;
+            border-radius:999px;
+            border:none;
+            cursor:pointer;
+            margin-left:8px;
+        }
+        .toast{
+            position:fixed;
+            left:50%;
+            top:40%;
+            transform:translate(-50%,-50%);
+            background:#444;
+            color:#fff;
+            padding:8px 16px;
+            border-radius:8px;
+            font-size:13px;
+            z-index:9999;
+            display:none;
+        }
+    </style>
+</head>
+<body>
+    <h1>LINK小手机 游玩申请</h1>
+    <div class="title-decoration">
+        <span class="line"></span>
+        <span>✦</span>
+        <span class="line"></span>
+    </div>
+
+    <div class="wrap">
+        <!-- 重要提示 -->
+        <div class="card">
+            <h2>重要提示</h2>
+            <p>项目仍在开发阶段，功能较少、存在较多bug，请理性预期，按需申请</p>
+        </div>
+
+        <!-- 原创宣誓 -->
+        <div class="card">
+            <h2>尊重原创共同宣誓</h2>
+            <div class="oath-box">
+                <p>你我在此共同宣誓，我们将充分尊重每一位创作者与老师的心血成果，自觉恪守版权与创作道德，坚决杜绝抄袭、盗用、扒取他人原创人设、世界书、提示词等一切原创作品，未经原作者明确许可，绝不私自对他人产出的内容进行二次加工、ai修改传播、去作者化拼接传播，也不擅自搬运、转发、扩散、外传群内外的原创作品，不将他人创作用于任何形式的私自传播以及商用行为，所有参考、取用素材的行为都严格遵守原作者给出的授权规则，不越权使用他人劳动成果，自觉抵制盗窃、剽窃等不良行为，共同维护尊重原创、友善安全的社群创作氛围，若发现违规行为也欢迎大家积极反馈监督。</p>
+            </div>
+        </div>
+
+        <!-- 社群铭言 -->
+        <div class="card">
+            <h2>社群铭言</h2>
+            <div class="motto-box">
+                <p>互帮互助，文明和谐。</p>
+                <p>杜绝戾气，勤用搜索。</p>
+                <p>如若不喜，左滑返回。</p>
+                <p>不打厨子，从我做起。</p>
+                <p>不提付费，慎供应商。</p>
+            </div>
+        </div>
+
+        <!-- 社群公约 -->
+        <div class="card">
+            <h2>社群公约</h2>
+            <ul>
+                <li>不要重复刷屏提问，基础问题优先查阅公告、自行摸索</li>
+                <li>持续散发负面情绪、不看公告者会移出社群</li>
+            </ul>
+            <p class="small text-center"><span class="heart">♥</span> 良好氛围需要大家一起维护 <span class="heart">♥</span></p>
+        </div>
+
+        <!-- 禁止倒卖与商业化 -->
+        <div class="card">
+            <h2>禁止倒卖与商业化</h2>
+            <div class="danger">
+                <p>严禁二传、倒卖、商业化牟利。账号绑定个人QQ，配套反商业化管控。一旦查实牟利行为，将收集证据维权，后果自负。</p>
+            </div>
+        </div>
+
+        <!-- 申请方式 -->
+        <div class="card">
+            <h2>申请方式</h2>
+            <div class="link-item">
+                <div class="link-item-title">🐧 QQ渠道</div>
+                <p>加入审核群：<a class="qq-link" href="mqqapi://card/show_pslcard?src_type=internal&version=1&card_type=group&uin=1234567">1234567</a>，进群后按照群公告完成提交审核。</p>
+            </div>
+            <div class="link-item">
+                <div class="link-item-title">💬 DC社区渠道</div>
+                <p>复制社区链接：<span id="dcLinkText">123456</span>
+                    <button class="copy-btn" onclick="copyDcLink()">点击复制</button>
+                </p>
+                <p class="small">粘贴到Discord访问进入社区，提交审核工单等待审核通过。</p>
+            </div>
+        </div>
+
+        <!-- 底部双栏：QQ / Discord -->
+        <div class="two-col">
+            <div class="card">
+                <h2>QQ社群渠道</h2>
+                <span class="label-tag">预计九月下旬</span>
+                <ul>
+                    <li>普通用户名额：约2000人</li>
+                </ul>
+                <p class="small">不新建群，仅补齐现有群空缺位置，名额总量固定，后续基本不再放量</p>
+                <div class="warn" style="margin-top:10px;">
+                    <strong>准入审核条件</strong>
+                    <ul>
+                        <li>成年女性</li>
+                        <li>拥有API使用经验</li>
+                        <li>QQ等级≥32级</li>
+                    </ul>
+                    <p class="small">等级不足32级：需提供隐私打码后的闲鱼+支付宝主页同屏截图</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <h2>Discord社区渠道</h2>
+                <span class="label-tag">长期开放</span>
+                <p>长期开放，无固定名额限制，独立社区</p>
+                <div class="info" style="margin-top:10px;">
+                    <strong>准入审核条件</strong>
+                    <ul>
+                        <li>成年女性</li>
+                        <li>拥有API使用经验</li>
+                    </ul>
+                    <p class="small">偏向自助游玩，鼓励大家互相交流。我们会浏览bug反馈与功能许愿，但人力有限，无法手把手教学，也不能保证全部需求都落地，敬请理解。</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="toast" id="toast">复制成功</div>
+
+    <footer>
+        项目规则最终解释权归小薯片所有
+    </footer>
+
+<script>
+const dcLink = "123456";
+function copyDcLink(){
+    navigator.clipboard.writeText(dcLink).then(()=>{
+        showToast("链接已复制 ✨");
+    }).catch(()=>{
+        const input = document.createElement('input');
+        input.value = dcLink;
+        document.body.appendChild(input);
+        input.select();
+        document.execCommand('copy');
+        document.body.removeChild(input);
+        showToast("链接已复制 ✨");
+    })
+}
+function showToast(text){
+    const toast = document.getElementById("toast");
+    toast.innerText = text;
+    toast.style.display = "block";
+    setTimeout(()=>{toast.style.display="none"},1500)
+}
+</script>
+</body>
+</html>
