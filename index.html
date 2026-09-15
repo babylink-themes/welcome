@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LINK小手机 游玩申请</title>
+    <title>LINK小手机 入群答题验证</title>
     <style>
         * {
             margin: 0;
@@ -134,22 +134,10 @@
             box-shadow: 0 0 10px rgba(255, 122, 182, 0.8);
         }
 
-        .label-tag {
-            display: inline-block;
-            padding: 3px 10px;
-            border-radius: 999px;
-            font-size: 12px;
-            background: linear-gradient(135deg, #ffd1e8, #e4ccff);
-            color: #a4477c;
-            border: 1px solid rgba(255, 255, 255, 0.9);
-            margin-left: auto;
-        }
-
         .warn,
         .info,
         .danger,
-        .oath-box,
-        .motto-box {
+        .oath-box {
             border-radius: 18px;
             padding: 14px;
             border: 1px solid rgba(255, 255, 255, 0.8);
@@ -161,11 +149,6 @@
             border-left: 4px solid #ff7ac1;
         }
 
-        .info {
-            background: linear-gradient(135deg, #f5edff, #e4dcff);
-            border-left: 4px solid #c9a7f0;
-        }
-
         .danger {
             background: linear-gradient(135deg, #ffe9f2, #ffd6e7);
             border-left: 4px solid #f55a9e;
@@ -174,23 +157,6 @@
         .oath-box {
             background: linear-gradient(135deg, #fdf0fc, #f3e7ff);
             border-left: 4px solid #d49bff;
-        }
-
-        .motto-box {
-            background: linear-gradient(135deg, #fff7fc, #ffe4f7);
-            border-left: 4px solid #ff9bd0;
-            text-align: center;
-            font-weight: 600;
-            color: #b3457f;
-        }
-
-        .motto-box p {
-            padding: 4px 0;
-            border-bottom: 1px dashed rgba(255, 122, 182, 0.35);
-        }
-
-        .motto-box p:last-child {
-            border-bottom: none;
         }
 
         ul {
@@ -216,24 +182,6 @@
         }
         .text-center{
             text-align:center;
-        }
-        .two-col {
-            display: grid;
-            grid-template-columns: repeat(2, minmax(0, 1fr));
-            gap: 12px;
-        }
-
-        .two-col .card {
-            padding: 14px;
-        }
-
-        .two-col h2 {
-            font-size: 15px;
-        }
-
-        .two-col li,
-        .two-col p {
-            font-size: 13px;
         }
 
         footer {
@@ -288,10 +236,46 @@
             z-index:9999;
             display:none;
         }
+
+        /*答题样式*/
+        .q-item{
+            margin:16px 0;
+        }
+        .opt{
+            margin:8px 0;
+            padding:8px 10px;
+            border-radius:12px;
+            background:rgba(255,255,255,0.55);
+            cursor: pointer;
+        }
+        .opt label{
+            display:block;
+            width:100%;
+            cursor: pointer;
+        }
+        .submit-btn{
+            width:100%;
+            padding:13px;
+            border:none;
+            border-radius:14px;
+            background:linear-gradient(135deg,#ff87bc,#d49bff);
+            color:white;
+            font-size:16px;
+            font-weight:600;
+            cursor:pointer;
+            box-shadow:0 3px 12px rgba(255,122,182,0.3);
+            margin-top:10px;
+        }
+        #successPanel{
+            display:none;
+        }
+        .progress-text{
+            font-size:13px;color:#b36894;margin-bottom:10px;
+        }
     </style>
 </head>
 <body>
-    <h1>LINK小手机 游玩申请</h1>
+    <h1>LINK小手机 入群答题验证</h1>
     <div class="title-decoration">
         <span class="line"></span>
         <span>✦</span>
@@ -299,109 +283,228 @@
     </div>
 
     <div class="wrap">
-        <!-- 重要提示 -->
         <div class="card">
-            <h2>重要提示</h2>
-            <p>项目仍在开发阶段，功能较少、存在较多bug，请理性预期，按需申请</p>
+            <h2>答题须知</h2>
+            <p>题库共100道，本次随机抽取 <strong>50道</strong> 考题，必须全部答对才解锁入群渠道。刷新页面会重新随机一套50道题目。</p>
+            <p class="small">请完整阅读项目公约之后再来作答<span class="heart">♥</span></p>
         </div>
 
-        <!-- 原创宣誓 -->
         <div class="card">
-            <h2>尊重原创共同宣誓</h2>
+            <h2>随机考题</h2>
+            <div class="progress-text">共50题，请全部完成选择</div>
+            <div id="questionWrap"></div>
+            <button class="submit-btn" onclick="submitQuiz()">提交全部答案</button>
+        </div>
+
+        <div id="successPanel" class="card">
+            <h2>🎉 答题验证通过</h2>
             <div class="oath-box">
-                <p>你我在此共同宣誓，我们将充分尊重每一位创作者与老师的心血成果，自觉恪守版权与创作道德，坚决杜绝抄袭、盗用、扒取他人原创人设、世界书、提示词等一切原创作品，未经原作者明确许可，绝不私自对他人产出的内容进行二次加工、ai修改传播、去作者化拼接传播，也不擅自搬运、转发、扩散、外传群内外的原创作品，不将他人创作用于任何形式的私自传播以及商用行为，所有参考、取用素材的行为都严格遵守原作者给出的授权规则，不越权使用他人劳动成果，自觉抵制盗窃、剽窃等不良行为，共同维护尊重原创、友善安全的社群创作氛围，若发现违规行为也欢迎大家积极反馈监督。</p>
+                <p>恭喜完成测试，请加入对应社区渠道完成最终审核。</p>
+            </div>
+
+            <div class="link-item">
+                <div class="link-item-title">🐧 QQ审核群</div>
+                <p>加入审核群：<a class="qq-link" href="mqqapi://card/show_pslcard?src_type=internal&version=1&card_type=group&uin=461633016">461633016</a></p>
+            </div>
+
+            <div class="link-item">
+                <div class="link-item-title">💬 Discord社区</div>
+                <p><span id="dcLinkText">https://discord.gg/fVtQaBf3pd</span>
+                    <button class="copy-btn" onclick="copyDcLink()">点击复制</button>
+                </p>
+                <p class="small">复制链接，在Discord打开提交工单审核</p>
+            </div>
+
+            <div class="warn" style="margin-top:12px;">
+                <strong>重要提醒</strong>
+                <ul>
+                    <li>禁止外传本答题页面、入群链接</li>
+                    <li>禁止倒卖、商业化项目全部资源</li>
+                </ul>
             </div>
         </div>
 
-        <!-- 社群铭言 -->
         <div class="card">
-            <h2>社群铭言</h2>
-            <div class="motto-box">
-                <p>互帮互助，文明和谐。</p>
-                <p>杜绝戾气，勤用搜索。</p>
-                <p>如若不喜，左滑返回。</p>
-                <p>不打厨子，从我做起。</p>
-                <p>不提付费，慎供应商。</p>
-            </div>
-        </div>
-
-        <!-- 社群公约 -->
-        <div class="card">
-            <h2>社群公约</h2>
-            <ul>
-                <li>不要重复刷屏提问，基础问题优先查阅公告、自行摸索</li>
-                <li>持续散发负面情绪、不看公告者会移出社群</li>
-            </ul>
-            <p class="small text-center"><span class="heart">♥</span> 良好氛围需要大家一起维护 <span class="heart">♥</span></p>
-        </div>
-
-        <!-- 禁止倒卖与商业化 -->
-        <div class="card">
-            <h2>禁止倒卖与商业化</h2>
+            <h2>社群公约回顾</h2>
             <div class="danger">
                 <p>严禁二传、倒卖、商业化牟利。账号绑定个人QQ，配套反商业化管控。一旦查实牟利行为，将收集证据维权，后果自负。</p>
             </div>
         </div>
-
-        <!-- 申请方式 -->
-        <div class="card">
-            <h2>申请方式</h2>
-            <div class="link-item">
-                <div class="link-item-title">🐧 QQ渠道</div>
-                <p>加入审核群：<a class="qq-link" href="mqqapi://card/show_pslcard?src_type=internal&version=1&card_type=group&uin=461633016">461633016</a>，进群后按照群公告要求提交群作业进行审核。</p>
-            </div>
-            <div class="link-item">
-                <div class="link-item-title">💬 DC社区渠道</div>
-                <p><span id="dcLinkText">https://discord.gg/fVtQaBf3pd</span>
-                    <button class="copy-btn" onclick="copyDcLink()">点击复制</button>
-                </p>
-                <p class="small">粘贴到Discord访问加入社区，提交审核工单等待审核通过。</p>
-            </div>
-        </div>
-
-        <!-- 底部双栏：QQ / Discord -->
-        <div class="two-col">
-            <div class="card">
-                <h2>QQ社群渠道</h2>
-                <span class="label-tag">预计九月下旬</span>
-                <ul>
-                    <li>游玩入驻名额：约2000人</li>
-                </ul>
-                <p class="small">不新建群，仅补齐现有群空缺位置，名额总量固定，后续基本不再放量</p>
-                <div class="warn" style="margin-top:10px;">
-                    <strong>准入审核条件</strong>
-                    <ul>
-                        <li>成年女性</li>
-                        <li>拥有API使用经验</li>
-                        <li>QQ等级≥32级</li>
-                    </ul>
-                    <p class="small">等级不足32级：需提供隐私打码后的闲鱼+支付宝主页同屏截图</p>
-                </div>
-            </div>
-
-            <div class="card">
-                <h2>Discord社区渠道</h2>
-                <span class="label-tag">长期开放</span>
-                <p>长期开放，无固定名额限制，独立社区</p>
-                <div class="info" style="margin-top:10px;">
-                    <strong>准入审核条件</strong>
-                    <ul>
-                        <li>成年女性</li>
-                        <li>拥有API使用经验</li>
-                    </ul>
-                    <p class="small">偏向自助游玩，鼓励大家互相交流。我们会浏览bug反馈与功能许愿，但人力有限，无法手把手教学，也不能保证全部需求都落地，敬请理解。</p>
-                </div>
-            </div>
-        </div>
     </div>
-    <div class="toast" id="toast">复制成功</div>
 
+    <div class="toast" id="toast">复制成功</div>
     <footer>
         项目规则最终解释权归小薯片所有
     </footer>
 
 <script>
 const dcLink = "https://discord.gg/fVtQaBf3pd";
+
+const questionBank = [
+{"title":"LINK项目最早原型名称是什么？","options":["喵机一号","酒馆AI","豆包","GPT"],"answer":0},
+{"title":"下面哪一项在社群严格禁止？","options":["友好交流","二贩商业化牟利","反馈bug","功能许愿"],"answer":1},
+{"title":"群内发生矛盾纠纷优先怎么做？","options":["到处挂人公开审判","群内理性反馈沟通","私下到处吐槽","开骂对线"],"answer":1},
+{"title":"未经原作者许可，是否可以随意转发他人卡包、世界书？","options":["可以随便转发","不可以","看心情","别人转我就转"],"answer":1},
+{"title":"拿到项目资源后正确行为？","options":["倒卖盈利","尊重原创不商用","删除作者署名","打包向外售卖"],"answer":1},
+{"title":"遇到不懂问题首先应当？","options":["刷屏反复提问","查阅公告自主搜索","私信轰炸作者","吐槽项目难用"],"answer":1},
+{"title":"LINK作者的昵称是？","options":["小薯片","薯条","橘子","饼干"],"answer":0},
+{"title":"本项目的设计灵感来源其中包含？","options":["酒馆AI","原神","王者荣耀","小说"],"answer":0},
+{"title":"作者为什么不开放完整开源？","options":["代码写的很差","防止二贩、商业化滥用","不想分享","嫌麻烦"],"answer":1},
+{"title":"看到别人分享未授权搬运的酒馆卡，你应当？","options":["保存到处转发","不去传播，可向管理反馈","下载倒卖","点赞扩散"],"answer":1},
+{"title":"社群铭言“不打厨子”是什么含义？","options":["不要攻击创作者本人","不许做饭","禁止聊美食","不要点外卖"],"answer":0},
+{"title":"社群铭言“如若不喜，左滑返回”意思是？","options":["不喜欢可以理性离开，不要到处输出负面戾气","必须喜欢项目","不喜欢就要骂","不喜欢就举报"],"answer":0},
+{"title":"在群内持续散发大量负能量会？","options":["无事发生","会被移出社群","获得安慰","管理员必须哄你"],"answer":1},
+{"title":"下面哪一个属于二贩行为？","options":["自己私下玩","把LINK打包售卖牟利","正常反馈bug","和朋友闲聊体验"],"answer":1},
+{"title":"反商业化登录系统作用是？","options":["装饰页面","打击倒卖、商业化贩卖项目资源","提升AI生成质量","加速网络"],"answer":1},
+{"title":"是否可以吃着作者产出，在外边公开蛐蛐、批判作者？","options":["可以发泄情绪","不可以","只要有理就可以","很多人做我就做"],"answer":1},
+{"title":"遇到问题优先看公告，而不是上来就提问。这句话？","options":["正确","错误","无所谓","看心情"],"answer":0},
+{"title":"QQ渠道审核条件之一，QQ等级需要？","options":["16级","32级","64级","0级"],"answer":1},
+{"title":"QQ等级不足32级成年女性，需要？","options":["直接进群","打码闲鱼+支付宝同屏截图证明成年","随便填信息","找别人账号顶替"],"answer":1},
+{"title":"申请使用LINK，身份要求？","options":["成年女性","所有人都可以","未成年优先","男性优先"],"answer":0},
+{"title":"Discord社区申请使用LINK，是否强制要求QQ等级？","options":["是","否","必须32级","越高越好"],"answer":1},
+{"title":"Discord社区提交使用申请，通过什么方式？","options":["私聊作者","提交工单","直接进群","发邮件"],"answer":1},
+{"title":"下面哪一项不可以在社群做？","options":["分享使用心得","截图断章取义，向外挂群内成员","反馈bug","功能许愿"],"answer":1},
+{"title":"对于开源项目，我们应当？","options":["拿来改一改去掉原作者署名发布","尊重原作者版权与协议","直接商用售卖","声称全部是自己写的"],"answer":1},
+{"title":"酒馆角色卡，没有作者许可，能否导入之后二次分发？","options":["可以","不可以","分享给好友没事","网上到处流传就可以"],"answer":1},
+{"title":"当看到别人在外部圈子造谣本项目，你应该？","options":["跟着一起扩散","不参与，有证据可以反馈管理","到处对线互骂","截图到处转发吃瓜"],"answer":1},
+{"title":"喵机一号之后开发的是？","options":["LINK","酒馆AI","豆包","NovelAI"],"answer":0},
+{"title":"作者最初做小手机的初衷？","options":["想做懒人开箱即用的AI小手机","为了卖钱","跟风别人","想出名"],"answer":0},
+{"title":"下面哪一个行为属于网络暴力？","options":["理性讨论问题","挂人、煽动舆论网暴他人","反馈bug","许愿功能"],"answer":1},
+{"title":"社群内是否允许重复刷屏提问同一个问题？","options":["允许","不允许","看群氛围","管理员不在就可以"],"answer":1},
+{"title":"作者不敢大力宣传项目主要原因？","options":["怕大家预期太高感到失望","不会做宣传","服务器不够","没时间"],"answer":0},
+{"title":"作者对待大家的反馈与repo是什么态度？","options":["基本不看","认真查看大家repo，收到好评会很开心","完全无视","只看差评"],"answer":1},
+{"title":"市面上有很多其他优秀小手机，我们应当？","options":["贬低其他项目","尊重其他作者作品，理性看待","到处拉踩对比","劝别人都来用LINK"],"answer":1},
+{"title":"下面哪条不是社群铭言？","options":["互帮互助文明和谐","杜绝戾气勤用搜索","不打厨子从我做起","遇到矛盾直接对线"],"answer":3},
+{"title":"未经许可，把群内别人原创的世界书私自导出外传，属于？","options":["正常分享","侵权剽窃行为","福利","乐于助人"],"answer":1},
+{"title":"群内有人吵架，作为旁观者正确做法？","options":["拱火吃瓜煽风点火","不拱火，不要站队吃瓜，可提醒理性沟通","加入吵架队伍","截图到处转发吃瓜"],"answer":1},
+{"title":"是否可以把自己主观圈子规则拿出来公开批判宣判别人？","options":["可以，我觉得对就可以","不可以，优先理性讨论劝导","只要多人支持就可以","看情况"],"answer":1},
+{"title":"项目处于开发阶段，存在bug，我们应当？","options":["到处吐槽烂项目","理性反馈bug，合理预期，理解开发人力有限","到处传播bug截图抹黑","要求立刻全部修好"],"answer":1},
+{"title":"下面哪一个是商业化违规行为？","options":["自己个人游玩","售卖LINK账号、资源、服务","写bug反馈","功能建议"],"answer":1},
+{"title":"反商业化系统可以识别？","options":["只有文字聊天","商业化登录、倒卖相关行为","图片大小","网络延迟"],"answer":1},
+{"title":"如果发现有人倒卖本项目资源，应当？","options":["去和贩子对线吵架","收集证据向社群管理反馈","购买贩子资源支持","到处吃瓜转发"],"answer":1},
+{"title":"作者小薯片，除项目作者之外？","options":["拥有至高管理特权","只是普通玩家，不是圣人，会有局限","官方客服，随叫随到","必须满足所有人需求"],"answer":1},
+{"title":"进群之后，是否可以直接私信轰炸作者求帮助？","options":["可以","不可以，优先看公告群内提问","看心情","只要有礼貌就可以"],"answer":1},
+{"title":"社群希望大家整体氛围是？","options":["互相攻击吵架","开开心心，友善包容","互相攀比","到处吃瓜挂人"],"answer":1},
+{"title":"对于开源项目的支持，作者表示？","options":["不需要任何开源项目","非常感谢众多开源项目提供支持","全部代码复制开源项目","嫌弃开源项目"],"answer":1},
+{"title":"当你不认同群内某人观点，你可以？","options":["人身攻击挂人","理性表达自己观点，不要上升人身","拉一堆人围攻对方","截图向外圈挂人"],"answer":1},
+{"title":"是否可以将答题页面、入群链接转发到外部无关圈子？","options":["可以分享扩散","禁止外传，仅限答题通过本人使用","无所谓","越多越好"],"answer":1},
+{"title":"QQ渠道游玩名额现状？","options":["无限放量","名额固定，补齐空缺，后续基本不再大量放量","每天大量新增名额","随时可以大批量进"],"answer":1},
+{"title":"Discord社区名额情况？","options":["完全关闭","长期开放无固定名额上限","名额极少","只允许老用户"],"answer":1},
+{"title":"下面哪个行为会触发风控被移出社群？","options":["正常反馈bug","持续输出大量负面戾气、无视公告","功能许愿","分享使用经验"],"answer":1},
+{"title":"“二贩”这个词在这里指？","options":["二手手机交易","二次倒卖项目资源牟利","二手书贩卖","二手周边"],"answer":1},
+{"title":"在DC社区，遇到使用困难，下面正确？","options":["要求手把手一对一教学","自助阅读文档，理解人力有限无法手把手教学","到处吐槽DC难用","到处开帖子骂人"],"answer":1},
+{"title":"是否可以拿酒馆角色卡，去掉原作者署名当做自己作品发布？","options":["可以美化之后发布","不可以，属于剽窃行为","只要改几句话就可以","网上很多人这么干"],"answer":1},
+{"title":"作者写的“为什么要讨厌懒人，明明她什么都没做”这句话表达什么？","options":["鼓励躺平摆烂","不要随意攻击懒人标签群体","鼓励大家偷懒","讨厌努力的人"],"answer":1},
+{"title":"社群希望大家，戾气？","options":["越多越好","退退退，减少戾气","到处发泄戾气","把负面情绪宣泄给社群"],"answer":1},
+{"title":"看到别人repo好评，我们应当？","options":["阴阳挑刺","尊重他人游玩感受，理性看待","强行反驳对方","嘲讽别人体验"],"answer":1},
+{"title":"下面哪一项，不属于抄袭剽窃行为？","options":["照搬别人世界书改一改署名","自己独立创作角色世界书","扒取别人提示词直接商用","盗用他人人设"],"answer":1},
+{"title":"当自己使用体验不好，正确做法？","options":["到处到处骂项目","群内客观反馈问题，接受项目仍在开发的现实","到处截图扩散吐槽","煽动其他人不要使用"],"answer":1},
+{"title":"下面哪一条属于尊重原创宣誓内容？","options":["随意扒取别人人设","不擅自搬运扩散他人原创作品","随便商用别人成果","去掉原作者署名再发布"],"answer":1},
+{"title":"项目规则最终解释权归谁？","options":["随便谁都可以","小薯片以及项目团队","进群的老成员","网络舆论"],"answer":1},
+{"title":"是否可以购买贩子售卖的LINK账号资源？","options":["方便省事可以买","严禁购买，属于支持二贩商业化","便宜就可以买","偷偷买没人知道"],"answer":1},
+{"title":"作者说自己每天还在进修学习，代表？","options":["项目已经完美没有bug","项目还在迭代，还有不足，持续学习改进","作者技术已经顶尖","项目不会更新"],"answer":1},
+{"title":"很多优秀的小手机作品，作者态度？","options":["贬低其他项目","承认市面上很多比自己厉害的小手机","敌视其他作者","拉踩别的小手机"],"answer":1},
+{"title":"收到大家repo与反馈，作者心情？","options":["无动于衷","看到好评会超级无敌开心，认真阅读repo","只看差评","厌烦用户反馈"],"answer":1},
+{"title":"下面哪项行为，属于引导恶劣舆论压力作者？","options":["客观反馈bug","大量人抱团吐槽施压逼迫作者实现需求","合理许愿功能","提出温和建议"],"answer":1},
+{"title":"“吃着作品在外蛐蛐”描述的是？","options":["一边使用产出，一边在外阴阳吐槽批判作者","正常写好评repo","合理反馈bug","功能许愿"],"answer":0},
+{"title":"面对功能许愿，下面正确认知？","options":["许愿就必须实现","可以许愿，但人力有限不保证全部落地","许愿之后必须催作者尽快做","许愿不实现就骂项目"],"answer":1},
+{"title":"成年女性，QQ等级32，想走QQ渠道，下一步？","options":["直接拿到资源","加入审核群完成群作业等待审核","私聊作者要资源","直接进使用群"],"answer":1},
+{"title":"Discord渠道提交工单之后应当？","options":["不停催审核","耐心等待工单处理，理解审核人力有限","开帖抱怨审核慢","到处吐槽审核"],"answer":1},
+{"title":"下面哪一项，会被反商业化系统标记？","options":["个人正常游玩","账号用于倒卖、租赁项目资源","写反馈","写repo"],"answer":1},
+{"title":"当群内已经有同类问题解答，你应当？","options":["无视继续刷屏提问","翻阅历史聊天记录、看公告，尽量复用已有答案","反复艾特管理员","私信所有人问一遍"],"answer":1},
+{"title":"社群铭言“勤用搜索”含义？","options":["遇事先搜索看公告历史，减少重复提问","上网随便乱搜","只搜负面评价","搜索用来扒别人资料"],"answer":0},
+{"title":"同人二创，如果引用他人设定，应当？","options":["直接拿来不标注来源","标注原作者，遵守授权条件","改一改假装自己写的","拿去售卖"],"answer":1},
+{"title":"是否可以把酒馆导出的角色，不加修改直接当做自己原创对外发布？","options":["可以，导出就是我的","不行，原角色版权归原作者","只要不用来赚钱就可以","很多人这么做"],"answer":1},
+{"title":"发现群友无意中踩公约，优先？","options":["直接截图挂出去公开处刑","群内温和劝导提醒，理性沟通","到处吃瓜转发","网暴对方"],"answer":1},
+{"title":"项目还在开发阶段，功能较少bug较多，我们应当？","options":["无脑吹捧完美无缺","理性预期，明白尚在开发迭代","到处宣传已经完美成品","到处嘲讽bug多"],"answer":1},
+{"title":"下面哪一个，是社群欢迎的？","options":["到处拱火吃瓜","友善互相帮助，理性讨论","到处输出负面情绪","拉踩其他AI项目"],"answer":1},
+{"title":"是否允许在社群内部，互相攀比API、设备优越感？","options":["允许攀比","不鼓励攀比，聚焦游玩体验","只要有钱就可以攀比","老成员可以攀比"],"answer":1},
+{"title":"对于其他AI角色扮演圈子，我们应当？","options":["到处引战吵架","尊重各个圈子，不主动引战拉踩","到处去别的圈子宣传LINK","嘲讽别的圈子"],"answer":1},
+{"title":"如果答题错误，正确操作？","options":["疯狂反复点提交","刷新页面，重新随机一套题目作答","修改网页源码跳过答题","找别人代答"],"answer":1},
+{"title":"答题页面，全部题目必须？","options":["随便选几个就行","50道全部选择完成，全部答对方可通过","选一半就可以通过","只做自己会的"],"answer":1},
+{"title":"是否可以找人代做这套入群答题？","options":["省事可以找人代答","不建议代答，代表本人并不了解公约规则","找朋友帮忙无所谓","网上找人付费答题"],"answer":1},
+{"title":"当审核没有通过，你应该？","options":["去群里大闹质问","阅读拒绝理由，对照公约自查，或者咨询审核疑问","到处吐槽审核双标","骚扰审核人员"],"answer":1},
+{"title":"下面哪一项行为属于侵害作者权益？","options":["正常个人游玩","扒取项目资源打包倒卖","提交bug反馈","写repo好评"],"answer":1},
+{"title":"作者做喵机一号，之后迭代出LINK，目的？","options":["打造开箱即用懒人向小手机AI体验","快速赚钱","打败其他AI","跟风热度"],"answer":0},
+{"title":"社群公约希望大家，优先在哪里反馈矛盾问题？","options":["外部其他社群","事发本群内部优先反馈处理","DC公开频道到处挂人","小红书挂人"],"answer":1},
+{"title":"下面说法正确：小薯片除作者身份外，____。","options":["全知全能圣人","也是普通玩家，存在认知局限","官方客服随叫随到","可以解决所有人全部问题"],"answer":1},
+{"title":"面对别人repo，无论好坏，我们不应当？","options":["尊重不同体验感受","对别人的体验进行嘲讽、抬杠辩论","客观讨论功能","分享自己使用感受"],"answer":1},
+{"title":"是否可以拿答题通过之后拿到的入群链接，分享给没有答题的朋友？","options":["可以分享给朋友","禁止外传，链接仅限本人答题通过使用","分享越多越好","私下偷偷分享没事"],"answer":1},
+{"title":"在Discord社区，工单提交之后，不要？","options":["耐心等待","反复刷屏催促工单处理","补充必要信息","礼貌描述情况"],"answer":1},
+{"title":"下面哪一个不属于网络暴力行为？","options":["理性就事论事沟通","人肉挂人曝光","煽动多人攻击个人","到处截图挂人审判"],"answer":0},
+{"title":"尊重原创宣誓中，不应当？","options":["尊重创作者劳动成果","剽窃扒取他人原创内容","遵守授权协议","发现剽窃行为合理反馈"],"answer":1},
+{"title":"当你看到贩子售卖本项目资源，不要？","options":["不购买贩子资源","去贩子那里吵架对线，激化矛盾","向管理提交证据反馈","提醒其他人不要上当"],"answer":1},
+{"title":"社群期待大家最终状态？","options":["互相攻击，戾气很重","大家都是天使咪，减少戾气，开心游玩","到处吃瓜吵架","互相攀比优越感"],"answer":1},
+{"title":"酒馆AI里面的世界书主要作用是？","options":["生成图片","设定角色背景、世界观、记忆信息","控制API速度","统计对话字数"],"answer":1},
+{"title":"在使用AI角色扮演的时候，角色人设应该？","options":["随意篡改别人原创人设","尊重原设定，不随意篡改搬运","拿来直接商用","去掉作者署名发布"],"answer":1},
+{"title":"遇到有人搬运未授权角色卡，最合适做法？","options":["直接对线吵架","不下载传播，向社群管理反馈","保存收藏备用","转发给好友"],"answer":1},
+{"title":"使用AI生成角色图文，我们需要注意？","options":["随便盗用真人照片做角色","不使用他人肖像，避免侵权","直接拿明星照片做角色","随便搬运网络图片"],"answer":1},
+{"title":"社群交流时，讨论他人角色创作，应当？","options":["贬低别人写的人设","客观评价，尊重他人创作心血","挑刺嘲讽","拉踩对比"],"answer":1},
+{"title":"当多人产生观点分歧，社群提倡？","options":["互相攻击扣帽子","冷静理性讨论，求同存异","站队互撕","到处找人评理审判"],"answer":1},
+{"title":"下面哪一项不属于项目资源？","options":["LINK登录账号","自己随手写的私人随笔","配套角色卡包","打包世界书文件"],"answer":1},
+{"title":"如果发现项目存在安全漏洞，正确做法？","options":["截图到处发公开漏洞","私聊作者悄悄反馈漏洞细节","利用漏洞倒卖账号","拿漏洞要挟作者"],"answer":1},
+{"title":"个人使用LINK，是否可以录制大量AI对话视频用于带货牟利？","options":["可以剪辑发短视频带货","不可以，禁止商业化使用","少量视频没事","不售卖资源就可以"],"answer":1},
+{"title":"酒馆角色卡导入，必须遵守？","options":["随便导入不用管授权","原作者的授权声明","只要网上找到就可以导入","导入之后就归自己所有"],"answer":1},
+{"title":"如果自己不再使用LINK，账号应当？","options":["转手卖给其他人","自行留存，不转售租借","送给陌生网友","挂二手平台出售"],"answer":1},
+{"title":"社群交流，不建议频繁发送？","options":["使用心得repo","大量无关刷屏图片、表情包刷屏","功能建议","bug反馈"],"answer":1},
+{"title":"下面说法正确，AI角色扮演的乐趣来自？","options":["倒卖资源赚钱","沉浸体验、尊重原创、友好交流","到处挂人吃瓜","攀比账号权限"],"answer":1},
+{"title":"如果不小心误踩公约，最好的做法？","options":["狡辩、对线","主动认错，及时改正，后续遵守公约","直接退群跑路","继续无视规则"],"answer":1},
+{"title":"下面哪一个不属于社群内友好交流？","options":["温和分享使用技巧","阴阳怪气抬杠提问","理性讨论bug","分享原创角色心得"],"answer":1},
+{"title":"下面哪一项行为不会触发风控？","options":["账号出租售卖","单纯个人游玩AI对话","批量注册账号倒卖","共享账号多人商用"],"answer":1}
+];
+
+const pickCount = 50;
+let currentQuiz = [];
+
+function shuffle(arr){
+    const temp = [...arr];
+    for(let i = temp.length -1; i>0; i--){
+        const j = Math.floor(Math.random()*(i+1));
+        [temp[i], temp[j]] = [temp[j], temp[i]]
+    }
+    return temp;
+}
+
+window.onload = function(){
+    currentQuiz = shuffle(questionBank).slice(0, pickCount);
+    const wrapDom = document.getElementById("questionWrap");
+    wrapDom.innerHTML = "";
+    currentQuiz.forEach((q, idx)=>{
+        let html = `<div class="q-item">
+        <p><strong>${idx+1}. ${q.title}</strong></p>`
+        q.options.forEach((opt, optIdx)=>{
+            html += `<div class="opt">
+            <label>
+            <input type="radio" name="q${idx}" value="${optIdx}"> ${opt}
+            </label>
+            </div>`
+        })
+        html += `</div>`
+        wrapDom.innerHTML += html;
+    })
+}
+
+function submitQuiz(){
+    let pass = true;
+    for(let i=0;i<currentQuiz.length;i++){
+        const checked = document.querySelector(`input[name="q${i}"]:checked`)
+        if(!checked){
+            showToast(`请完成第${i+1}题！`);
+            return;
+        }
+        const ans = Number(checked.value);
+        if(ans !== currentQuiz[i].answer){
+            pass = false;
+        }
+    }
+    if(pass){
+        document.getElementById("successPanel").style.display="block";
+        document.getElementById("successPanel").scrollIntoView({behavior:"smooth"})
+    }else{
+        showToast("答题存在错误，请刷新页面重新抽取题目作答。")
+    }
+}
+
 function copyDcLink(){
     navigator.clipboard.writeText(dcLink).then(()=>{
         showToast("链接已复制 ✨");
@@ -415,11 +518,12 @@ function copyDcLink(){
         showToast("链接已复制 ✨");
     })
 }
+
 function showToast(text){
     const toast = document.getElementById("toast");
     toast.innerText = text;
     toast.style.display = "block";
-    setTimeout(()=>{toast.style.display="none"},1500)
+    setTimeout(()=>{toast.style.display="none"},1600)
 }
 </script>
 </body>
