@@ -272,6 +272,25 @@
         .progress-text{
             font-size:13px;color:#b36894;margin-bottom:10px;
         }
+        /* 公约阅读区域 */
+        .rule-scroll-box{
+            max-height:440px;
+            overflow-y:auto;
+            padding:14px;
+            background:rgba(255,242,248,0.7);
+            border-radius:16px;
+            font-size:14px;
+            line-height:1.65;
+        }
+        .confirm-wrap{
+            margin-top:14px;
+        }
+        .confirm-label{
+            display:flex;
+            align-items:flex-start;
+            gap:8px;
+            cursor:pointer;
+        }
     </style>
 </head>
 <body>
@@ -289,10 +308,117 @@
             <p class="small">请完整阅读项目公约之后再来作答<span class="heart">♥</span></p>
         </div>
 
+        <!-- 新增：公约备考资料阅读区 -->
+        <div class="card">
+            <h2>📖 LINK入群考试之全科满分备考资料</h2>
+            <div class="rule-scroll-box">
+                <p><strong>第一部分：官方正式完整公约（所有规则类题目出处）</strong></p>
+                <p><strong>前言</strong></p>
+                <p>LINK、BabyLink、喵机一号系列为个人原创免费非商用公益项目。<br>
+                所有产出、资源、代码、卡包、世界书、配套体系均由作者独立耗时打磨维护。</p>
+                <p>社群初衷：干净、友善、无戾气、尊重原创、拒绝倒卖、轻松游玩。<br>
+                入群即代表完全知晓、同意、自愿遵守全部公约，违规直接处置，不接受任何借口。</p>
+
+                <p><strong>一、核心底线（零容忍·永久拉黑）</strong></p>
+                <p>1. 严禁二贩、倒卖、出租、共享账号、打包售卖项目任意资源<br>
+                2. 严禁一切商业化牟利<br>
+                3. 严禁扒取、篡改、搬运原创内容冒充自己产出</p>
+
+                <p><strong>二、社群氛围规则</strong></p>
+                <p>1. 禁止长期负能量、吐槽抹黑、抱怨项目、散播负面舆论<br>
+                2. 禁止挂人、吃瓜、拱火、煽动矛盾<br>
+                3. 禁止人身攻击、抬杠、嘲讽、阴阳怪气<br>
+                4. 禁止攀比设备、API、权限、资历优越感<br>
+                5. 禁止刷屏灌水、无脑重复提问</p>
+
+                <p><strong>三、原创尊重规则</strong></p>
+                <p>1. 尊重所有社群原创卡、原创世界书、原创设定<br>
+                2. 无授权绝对不搬运、不转发、不二次发布<br>
+                3. 禁止去除原作者署名、冒充原创<br>
+                4. 原创资源仅限个人私下游玩<br>
+                5. 发现倒卖搬运不传播、可举报管理</p>
+
+                <p><strong>四、提问规范</strong></p>
+                <p>1. 提问前先搜记录、先看公告、先自查<br>
+                2. 禁止轰炸作者、管理私信<br>
+                3. 禁止催更、催审核、逼迫开发功能<br>
+                4. Bug反馈理性客观，禁止借Bug抹黑嘲讽</p>
+
+                <p><strong>五、入群审核规则</strong></p>
+                <p>1. QQ渠道基础门槛：成年女性 + QQ等级32级<br>
+                2. 等级不足可提交成年证明审核<br>
+                3. DC渠道无等级限制，工单审核制<br>
+                4. 禁止代答、代审核、顶替入群<br>
+                5. 审核结果最终判定，不纠缠</p>
+
+                <p><strong>六、社群五大铭言（必考高频）</strong></p>
+                <p>1. 勤用搜索，减少重复提问<br>
+                2. 不打厨子，尊重创作者付出<br>
+                3. 如若不喜，左滑返回，不携戾气<br>
+                4. 尊重原创，拒绝白嫖倒卖<br>
+                5. 友善包容，轻松游玩</p>
+
+                <p><strong>七、处罚分级</strong></p>
+                <p>- 轻度：警告、禁言<br>
+                - 中度：踢群、短期黑名单<br>
+                - 重度：倒卖/牟利/抹黑 → 永久拉黑、风控封禁</p>
+
+                <p><strong>八、最终声明</strong></p>
+                <p>项目为个人公益作品，无强制服务义务，迭代中存在Bug属于正常情况。<br>
+                规则最终解释权归项目作者（小薯片）团队所有。</p>
+
+                <hr style="margin:16px 0;border-color:#ffd9e9;">
+
+                <p><strong>第二部分：项目背景考点（所有常识类题目全覆盖）</strong></p>
+                <p>1. 项目发展历程（必考）<br>
+                - 项目最早原型：喵机一号<br>
+                - 迭代正式项目：LINK / BabyLink</p>
+
+                <p>2. 作者相关考点<br>
+                - 作者称呼：小薯片<br>
+                - 项目初衷：做懒人开箱即用、简单好用的AI小手机</p>
+
+                <p>3. 项目定位<br>
+                - 完全免费、非商用、公益<br>
+                - 不开源完整源码，防止二贩滥用</p>
+
+                <p>4. 社群态度&理念考点<br>
+                - 市面上有很多同类项目，我们选择尊重同行、理性看待、不拉踩<br>
+                - 作者面对反馈：认真看每一条repo、好评会很开心<br>
+                - 作者不大力宣传的原因：怕用户预期太高、体验落差大</p>
+
+                <p>5. 二贩定义（高频考题）<br>
+                把LINK资源、账号、卡包、整合包拿去售卖、打包收费、有偿分享=二贩违规</p>
+
+                <p>6. 矛盾处理标准答案<br>
+                群内矛盾优先：本群理性沟通、内部解决，不挂人、不外发</p>
+
+                <p>7. 功能许愿规则<br>
+                可以许愿功能，但作者人力有限，不保证一定实现</p>
+
+                <p>8. 负能量规范<br>
+                群内禁止长期散发负能量、持续吐槽、阴阳项目</p>
+
+                <p>9. 开源&版权考点<br>
+                开源项目需要尊重原作者协议、不篡改署名、不商用</p>
+
+                <p>10. 外部造谣处理<br>
+                外网、外群造谣项目节奏：不参与、不扩散、可反馈管理</p>
+            </div>
+            <div class="confirm-wrap">
+                <label class="confirm-label">
+                    <input type="checkbox" id="readConfirm">
+                    <span>✅ 我已完整阅读备考资料，清楚全部公约规则，准备开始答题</span>
+                </label>
+            </div>
+        </div>
+
         <div class="card">
             <h2>随机考题</h2>
             <div class="progress-text">共50题，请全部完成选择</div>
-            <div id="questionWrap"></div>
+            <div id="questionWrap">
+                <p style='color:#d94f8b'>请阅读资料并勾选确认后，考题才会加载</p>
+            </div>
             <button class="submit-btn" onclick="submitQuiz()">提交全部答案</button>
         </div>
 
@@ -445,12 +571,7 @@ const questionBank = [
 {"title":"如果发现项目存在安全漏洞，正确做法？","options":["截图到处发公开漏洞","私聊作者悄悄反馈漏洞细节","利用漏洞倒卖账号","拿漏洞要挟作者"],"answer":1},
 {"title":"个人使用LINK，是否可以录制大量AI对话视频用于带货牟利？","options":["可以剪辑发短视频带货","不可以，禁止商业化使用","少量视频没事","不售卖资源就可以"],"answer":1},
 {"title":"酒馆角色卡导入，必须遵守？","options":["随便导入不用管授权","原作者的授权声明","只要网上找到就可以导入","导入之后就归自己所有"],"answer":1},
-{"title":"如果自己不再使用LINK，账号应当？","options":["转手卖给其他人","自行留存，不转售租借","送给陌生网友","挂二手平台出售"],"answer":1},
-{"title":"社群交流，不建议频繁发送？","options":["使用心得repo","大量无关刷屏图片、表情包刷屏","功能建议","bug反馈"],"answer":1},
-{"title":"下面说法正确，AI角色扮演的乐趣来自？","options":["倒卖资源赚钱","沉浸体验、尊重原创、友好交流","到处挂人吃瓜","攀比账号权限"],"answer":1},
-{"title":"如果不小心误踩公约，最好的做法？","options":["狡辩、对线","主动认错，及时改正，后续遵守公约","直接退群跑路","继续无视规则"],"answer":1},
-{"title":"下面哪一个不属于社群内友好交流？","options":["温和分享使用技巧","阴阳怪气抬杠提问","理性讨论bug","分享原创角色心得"],"answer":1},
-{"title":"下面哪一项行为不会触发风控？","options":["账号出租售卖","单纯个人游玩AI对话","批量注册账号倒卖","共享账号多人商用"],"answer":1}
+{"title":"如果自己不再使用LINK，账号应当？","options":["转手卖给其他人","自行留存，不转售租借","送给陌生网友","挂二手平台出售"],"answer":1}
 ];
 
 const pickCount = 50;
@@ -465,23 +586,28 @@ function shuffle(arr){
     return temp;
 }
 
-window.onload = function(){
-    currentQuiz = shuffle(questionBank).slice(0, pickCount);
-    const wrapDom = document.getElementById("questionWrap");
-    wrapDom.innerHTML = "";
-    currentQuiz.forEach((q, idx)=>{
-        let html = `<div class="q-item">
-        <p><strong>${idx+1}. ${q.title}</strong></p>`
-        q.options.forEach((opt, optIdx)=>{
-            html += `<div class="opt">
-            <label>
-            <input type="radio" name="q${idx}" value="${optIdx}"> ${opt}
-            </label>
-            </div>`
+// 勾选框监听
+document.getElementById("readConfirm").onchange = function(){
+    if(this.checked){
+        currentQuiz = shuffle(questionBank).slice(0, pickCount);
+        const wrapDom = document.getElementById("questionWrap");
+        wrapDom.innerHTML = "";
+        currentQuiz.forEach((q, idx)=>{
+            let html = `<div class="q-item">
+            <p><strong>${idx+1}. ${q.title}</strong></p>`
+            q.options.forEach((opt, optIdx)=>{
+                html += `<div class="opt">
+                <label>
+                <input type="radio" name="q${idx}" value="${optIdx}"> ${opt}
+                </label>
+                </div>`
+            })
+            html += `</div>`
+            wrapDom.innerHTML += html;
         })
-        html += `</div>`
-        wrapDom.innerHTML += html;
-    })
+    }else{
+        document.getElementById("questionWrap").innerHTML = "<p style='color:#d94f8b'>请阅读资料并勾选确认后，考题才会加载</p>";
+    }
 }
 
 function submitQuiz(){
